@@ -145,6 +145,8 @@ const AttendanceTracker = () => {
     };
 
     const navigate = useNavigate()
+
+    
     const handleFetchAttendance = async (e) => {
         e.preventDefault();
 
@@ -173,15 +175,20 @@ const AttendanceTracker = () => {
                     setIsTable2Visible(false);
                     setIsTableVisible(true);
                     setSelectedMonth('')
-
+                    setErrMsg('')
                     setSelectedYear('')
 
                 }
                 else {
                     alert(data.error)
                     setErrMsg(data.error)
+                    setSelectedYear('')
+                    setSelectedMonth('')
+
+
                 }
             }
+
         
         } catch (err) {
             console.log(err)
@@ -240,10 +247,11 @@ const AttendanceTracker = () => {
                     setIsTableVisible(false)
                     setIsTable2Visible(true);
                     setSelectedClass('')
+                    setErrMsg2('')
 
                     setSelectedDate('')
                     setSelectedMonth2('')
-
+                    
                     setSelectedYear2('')
 
                 }
@@ -407,7 +415,7 @@ const AttendanceTracker = () => {
                             </button>
                             <div>
                                 {/* {isTableVisible &&  !isTable2Visible && !ErrMsg && <div> */}
-                                {isTableVisible &&  !isTable2Visible && !ErrMsg  && <div>
+                                {attendanceData && isTableVisible &&  !isTable2Visible && !ErrMsg  && <div>
 
                                     <h2 className="text-xl font-semibold mb-4 text-gray-800">
                                         Student Attendance Record

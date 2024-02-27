@@ -133,7 +133,8 @@ const Principle = () => {
 
             if (response.status === 200) {
                 setSuccess(true);
-                const dataa=response.json();   
+                const dataa=await response.text();   
+                 console.log(dataa)
                 alert(dataa)
 
                 console.log("success login")
@@ -258,6 +259,9 @@ const Principle = () => {
 
                 setIsTableVisible(true);
                 console.log('Success: Teacher attendance fetched');
+                setSelectedMonth('')
+                setSelectedYear('')
+                setTeacherId('')
             } else {
                 console.log("failed", response.status)
             }
@@ -270,6 +274,9 @@ const Principle = () => {
             } else {
                 setErrMsg('Failed to fetch teacher attendance');
             }
+            setSelectedMonth('')
+                setSelectedYear('')
+                setTeacherId('')
 
         }
         console.log("2333", teacherAttendance)
